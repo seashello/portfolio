@@ -3,4 +3,77 @@ body {
          and use the OS’s UI font as the website font
        */
     font: 100%/1.5 system-ui;
+    max-width:100ch;
+    margin-inline: auto;
+    padding-left: 2ch;
+    padding-right: 2ch;
+    padding-top: 3ch;
+    padding-bottom: 3ch;
   }
+nav {
+  margin-bottom: 2ch;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: oklch(80% 3% 200);
+  border-width: 0.25em;
+  padding-bottom: 0.25em;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: inherit;
+    padding: 2em;
+  }
+  a:hover { /* becomes a:hover */
+    background-color: #5c6bb88c;
+    border-bottom: var(--color-accent);
+    border-width: 0.25em;
+    border-bottom-style: solid;
+    padding-bottom: 0.25em;
+    padding-top: 0.4em;
+  }
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+#bold {
+  border-bottom: 1px solid #e8b4cc;
+  font-weight: bold;
+  border-width: 0.25em;
+  padding-bottom: .1em;
+  margin-bottom: 2ch;
+  border-width: 0.5em;
+}
+:root{
+  --color-accent: #2741c2;
+}
+form {
+  label{
+    display:contents;
+    gap: 0.5em;
+    display:grid;
+    padding-top: 1em;
+  }
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+.projects {
+  article {
+    h2 {
+      margin: 0;
+    }
+    grid-row: span 3; 
+    grid-template-rows: subgrid;
+    display:grid;
+    gap: 2em;
+    padding: 1em;
+  }
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
