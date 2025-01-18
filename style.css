@@ -77,3 +77,26 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
+.resume {
+  section {
+    padding: 0.6em;
+  }
+  section:hover {
+    background-color: #999dcd6f;
+  }  
+  img {
+    border-radius: 50%;
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover;
+    float:left;
+  }
+  .res-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+  }
+  h2{
+    border-bottom: 3px solid #e8b4cc;
+  }
+}
