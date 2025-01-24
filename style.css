@@ -11,12 +11,11 @@ body {
     padding-bottom: 3ch;
   }
 nav {
-  border-bottom-color: var(--border-color);
-
+  /* border-bottom-color: var(--border-color); */
   margin-bottom: 2ch;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  /* border-bottom-color: oklch(80% 3% 200); */
+  border-bottom-color: oklch(80% 3% 200);
   border-width: 0.25em;
   padding-bottom: 0.25em;
   text-align: center;
@@ -26,8 +25,8 @@ nav {
     padding: 2em;
   }
   a:hover { /* becomes a:hover */
-    background-color: color-mix(in oklch, #5c6bb88c, canvas 50%);
-    /* background-color: #5c6bb88c; */
+    /* background-color: color-mix(in oklch, #5c6bb88c, canvas 50%); */
+    background-color: #5c6bb88c;
     border-bottom: var(--color-accent);
     border-width: 0.25em;
     border-bottom-style: solid;
