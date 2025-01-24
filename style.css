@@ -11,10 +11,12 @@ body {
     padding-bottom: 3ch;
   }
 nav {
+  border-bottom-color: var(--border-color);
+
   margin-bottom: 2ch;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: oklch(80% 3% 200);
+  /* border-bottom-color: oklch(80% 3% 200); */
   border-width: 0.25em;
   padding-bottom: 0.25em;
   text-align: center;
@@ -48,6 +50,7 @@ nav {
 }
 :root{
   --color-accent: #2741c2;
+  --border-color: oklch(50% 10% 200 / 40%);
   color-scheme: dark;
 }
 form {
