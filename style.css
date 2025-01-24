@@ -48,6 +48,7 @@ nav {
 }
 :root{
   --color-accent: #2741c2;
+  color-scheme: dark;
 }
 form {
   label{
