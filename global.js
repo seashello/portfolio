@@ -13,17 +13,24 @@ function $$(selector, context = document) {
 // currentLink?.classList.add('current');
 
 let pages = [
-    { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'contact/', title: "Contact" },
-    { url: 'resume/', title: "Resume" },
-  ];
+  { url: '', title: 'Home' },
+  { url: 'projects/', title: 'Projects' },
+  { url: 'contact/', title: "Contact" },
+  { url: 'https://github.com/seashello', title: "Profile" },
+  { url: 'resume/', title: "Resume" },
+];
 
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 for (let p of pages) {
-    let url = p.url;
-    let title = p.title;
-    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+  const ARE_WE_HOME = document.documentElement.classList.contains('home');
+  let url = p.url;
+  if (!ARE_WE_HOME && !url.startsWith('http')) {
+    url = '../' + url;
+  }
+  let title = p.title;
+  nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
+
+const ARE_WE_HOME = document.documentElement.classList.contains('home');
