@@ -15,6 +15,8 @@ let pages = [
   { url: 'resume/', title: "Resume" },
 ];
 
+const ARE_WE_HOME = document.documentElement.classList.contains('home');
+
 for (let p of pages) {
   const ARE_WE_HOME = document.documentElement.classList.contains('home');
   let url = p.url;
@@ -22,10 +24,17 @@ for (let p of pages) {
     url = '../' + url;
   }
   let title = p.title;
+
   let a = document.createElement('a');
+
+  if (a.host === location.host && a.pathname === location.pathname) {
+    a.classList.add('current');
+  }
+  if (a.host !== location.host && a.pathname === location.pathname) {
+    a.target = "_blank";
+  }
+
   a.href = url;
   a.textContent = title;
   nav.append(a);
 }
-
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
