@@ -26,7 +26,8 @@ nav {
     padding: 2em;
   }
   a:hover { /* becomes a:hover */
-    background-color: #5c6bb88c;
+    background-color: color-mix(in oklch, #5c6bb88c, canvas 85%);
+    /* background-color: #5c6bb88c; */
     border-bottom: var(--color-accent);
     border-width: 0.25em;
     border-bottom-style: solid;
