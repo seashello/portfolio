@@ -38,7 +38,7 @@ nav {
   margin-right: auto;
   width: 50%;
 }
-#bold {
+.current {
   border-bottom: 1px solid #e8b4cc;
   font-weight: bold;
   border-width: 0.25em;
