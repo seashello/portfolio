@@ -4,13 +4,8 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// const navLinks = $$("nav a");
-
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname
-//   );
-
-// currentLink?.classList.add('current');
+let nav = document.createElement('nav');
+document.body.prepend(nav);
 
 let pages = [
   { url: '', title: 'Home' },
@@ -19,9 +14,6 @@ let pages = [
   { url: 'https://github.com/seashello', title: "Profile" },
   { url: 'resume/', title: "Resume" },
 ];
-
-let nav = document.createElement('nav');
-document.body.prepend(nav);
 
 for (let p of pages) {
   const ARE_WE_HOME = document.documentElement.classList.contains('home');
