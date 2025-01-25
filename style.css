@@ -25,12 +25,12 @@ nav {
     padding: 2em;
   }
   a:hover { /* becomes a:hover */
-    background-color: color-mix(in oklch, #5c6bb88c, canvas 50%);
+    background-color: color-mix(in oklch, #5c6bb88c, canvas 30%);
     /* background-color: #5c6bb88c; */
     border-bottom: var(--color-accent);
     border-width: 0.25em;
     border-bottom-style: solid;
-    padding-bottom: 0.25em;
+    padding-bottom: 0.35em;
     padding-top: 0.4em;
   }
 }
@@ -51,7 +51,6 @@ nav {
 :root{
   --color-accent: #2741c2;
   --border-color: oklch(50% 10% 200 / 40%);
-  color-scheme: dark;
 }
 form {
   label{
