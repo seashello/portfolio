@@ -1,15 +1,15 @@
 body {
-    /* Set line height to 1.5 times the font size
+  /* Set line height to 1.5 times the font size
          and use the OS’s UI font as the website font
        */
-    font: 100%/1.5 system-ui;
-    max-width:100ch;
-    margin-inline: auto;
-    padding-left: 2ch;
-    padding-right: 2ch;
-    padding-top: 3ch;
-    padding-bottom: 3ch;
-  }
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding-left: 2ch;
+  padding-right: 2ch;
+  padding-top: 3ch;
+  padding-bottom: 3ch;
+}
 nav {
   /* border-bottom-color: var(--border-color); */
   margin-bottom: 2ch;
@@ -24,7 +24,8 @@ nav {
     color: inherit;
     padding: 2em;
   }
-  a:hover { /* becomes a:hover */
+  a:hover {
+    /* becomes a:hover */
     background-color: color-mix(in oklch, #5c6bb88c, canvas 30%);
     /* background-color: #5c6bb88c; */
     border-bottom: var(--color-accent);
@@ -44,19 +45,19 @@ nav {
   border-bottom: 1px solid #e8b4cc;
   font-weight: bold;
   border-width: 0.25em;
-  padding-bottom: .1em;
+  padding-bottom: 0.1em;
   margin-bottom: 2ch;
   border-width: 0.5em;
 }
-:root{
+:root {
   --color-accent: #2741c2;
   --border-color: oklch(50% 10% 200 / 40%);
 }
 form {
-  label{
-    display:contents;
+  label {
+    display: contents;
     gap: 0.5em;
-    display:grid;
+    display: grid;
     padding-top: 1em;
   }
   grid-template-columns: subgrid;
@@ -67,16 +68,21 @@ form {
     h2 {
       margin: 0;
     }
-    grid-row: span 3; 
+    grid-row: span 3;
     grid-template-rows: subgrid;
-    display:grid;
+    display: grid;
     gap: 2em;
     padding: 1em;
   }
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
@@ -86,20 +92,20 @@ h1, h2, h3, h4, h5, h6 {
   }
   section:hover {
     background-color: #999dcd6f;
-  }  
+  }
   img {
     border-radius: 50%;
-    width: 150px; 
-    height: 150px; 
+    width: 150px;
+    height: 150px;
     object-fit: cover;
-    float:left;
+    float: left;
   }
   .res-head {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 10px;
   }
-  h2{
+  h2 {
     border-bottom: 3px solid #e8b4cc;
   }
 }
@@ -118,9 +124,76 @@ h1, h2, h3, h4, h5, h6 {
 #profile-stats dt {
   grid-row: 1;
   font-size: 1.2em; /* Adjust the size as needed */
-  font-weight: bold
+  font-weight: bold;
 }
 
 #profile-stats dd {
   grid-row: 2;
+}
+
+#projects-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
+
+.legend {
+  display: grid;
+  flex-direction: column;
+  gap: 0.5em;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  border: 3px solid #f7dcdc; /* Add a border around the legend */
+  padding: 2em;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.legend .swatch {
+  width: 1em; /* Adjust the size as needed */
+  height: 1em; /* Adjust the size as needed */
+  aspect-ratio: 1 / 1;
+  background-color: var(--color); /* Use the appropriate color variable */
+  border-radius: 0.25em; /* Slight rounding, adjust as needed */
+  align-items: center;
+}
+
+/* Optional: Make the swatch a full circle */
+.legend .swatch.circle {
+  border-radius: 50%;
+}
+
+.container {
+  display: flex;
+  gap: 3em;
+  align-items: center;
+}
+
+#projects-plot {
+  &:has(path:hover) {
+    path:not(:hover) {
+      opacity: 0.5;
+    }
+  }
+}
+
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+    stroke: #fff8d8; /* Outline color */
+    stroke-width: 2px;
+  }
 }

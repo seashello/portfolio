@@ -1,5 +1,11 @@
 [
   {
+    "title": "Trolley Data",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Showed how data visualizations can be deceptive."
+  },
+  {
     "title": "Power Outages",
     "year": "2024",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
@@ -43,25 +49,25 @@
   },
   {
     "title": "Quia modi laborum odio.",
-    "year": "2024",
+    "year": "2023",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Nostrum facilis officiis illum consectetur officia repudiandae dolore maxime molestiae, est quas eius repellendus, doloremque quasi a rem aliquam unde exercitationem tenetur qui recusandae atque quaerat. Ipsa eveniet beatae nisi."
   },
   {
     "title": "Voluptas tempora esse delectus!",
-    "year": "2024",
+    "year": "2022",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Dignissimos enim cupiditate vero ullam, aspernatur laborum suscipit saepe ut perspiciatis alias qui quisquam deleniti numquam delectus voluptates provident adipisci ratione explicabo. Sint iste saepe illum autem magnam repudiandae iusto!"
   },
   {
     "title": "Quaerat, sed! Veniam, dolorem.",
-    "year": "2024",
+    "year": "2022",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Laudantium, ipsa quaerat perspiciatis repudiandae magnam inventore perferendis? Minus hic laboriosam eveniet vero ipsam tempora eos, quod placeat perspiciatis incidunt neque amet debitis quibusdam quia mollitia odit nobis libero harum."
   },
   {
     "title": "Consequatur laudantium consectetur adipisci!",
-    "year": "2024",
+    "year": "2022",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
     "description": "Voluptas iusto corrupti magni. Ullam commodi ab odio quam ratione veritatis id rerum alias eveniet architecto velit adipisci quasi nam, pariatur consequuntur similique iste esse possimus. Odio, deserunt! Voluptates, voluptatibus."
   }
