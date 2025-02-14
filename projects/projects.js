@@ -53,8 +53,6 @@ function renderPieChart(projectsGiven) {
         if (selectedIndex === -1) {
           renderProjects(projects, projectsContainer, "h2");
         } else {
-          // TODO: filter projects and project them onto webpage
-          // Hint: `.label` might be useful
           let selectedLabel = data[selectedIndex].label.toLowerCase();
           let filteredProjects = projects.filter((project) => {
             return project.year.toLowerCase() === selectedLabel;
