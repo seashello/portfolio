@@ -13,7 +13,7 @@ let pages = [
   { url: "contact/", title: "Contact" },
   { url: "https://github.com/seashello", title: "Profile" },
   { url: "resume/", title: "Resume" },
-  // { url: "meta/", title: "Meta" },
+  { url: "meta/", title: "Meta" },
 ];
 
 const ARE_WE_HOME = document.documentElement.classList.contains("home");
