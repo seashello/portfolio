@@ -2,6 +2,11 @@ let data = [];
 let commits = [];
 let xScale;
 let yScale;
+let selectedCommits = [];
+let commitProgress = 100;
+let timeScale;
+let commitMaxTime;
+let timeFilter = -1;
 
 async function loadData() {
   data = await d3.csv("loc.csv", (row) => ({
@@ -13,11 +18,27 @@ async function loadData() {
     datetime: new Date(row.datetime),
   }));
   displayStats();
+  processCommits();
+  initializeTimeScale();
 }
 document.addEventListener("DOMContentLoaded", async () => {
   await loadData();
   updateTooltipVisibility(false);
+
+  const slider = document.getElementById("commit-slider");
+  slider.addEventListener("input", (event) => {
+    commitProgress = event.target.value;
+    updateCommitProgress(commitProgress);
+    updateTimeDisplay();
+  });
 });
+
+function initializeTimeScale() {
+  timeScale = d3.scaleTime()
+    .domain([d3.min(commits, d => d.datetime), d3.max(commits, d => d.datetime)])
+    .range([0, 100]);
+  commitMaxTime = timeScale.invert(commitProgress);
+}
 
 function processCommits() {
   commits = d3
@@ -194,12 +215,14 @@ function createScatterPlot() {
     .style("fill-opacity", 0.7)
     .on("mouseenter", function (event, d, i) {
       d3.select(event.currentTarget).style("fill-opacity", 1); // Full opacity on hover
+      d3.select(event.currentTarget).classed('selected', true);
       updateTooltipContent(d);
       updateTooltipVisibility(true);
       updateTooltipPosition(event);
     })
     .on("mouseleave", function (event) {
       d3.select(event.currentTarget).style("fill-opacity", 0.7); // Restore transparency
+      d3.select(event.currentTarget).classed('selected', false);
       updateTooltipContent({}); // Clear tooltip content
       updateTooltipVisibility(false);
     });
@@ -246,25 +269,25 @@ function brushSelector() {
 
 let brushSelection = null;
 
-function brushed(event) {
-  brushSelection = event.selection;
-  updateSelection();
-  updateSelectionCount();
-  updateLanguageBreakdown();
+function brushed(evt) {
+  let brushSelection = evt.selection;
+  selectedCommits = !brushSelection
+    ? []
+    : commits.filter((commit) => {
+        let min = { x: brushSelection[0][0], y: brushSelection[0][1] };
+        let max = { x: brushSelection[1][0], y: brushSelection[1][1] };
+        let x = xScale(commit.date);
+        let y = yScale(commit.hourFrac);
+
+        return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+      });
+   updateSelection();
+   updateSelectionCount();
+   updateLanguageBreakdown();
 }
 
 function isCommitSelected(commit) {
-  if (!brushSelection) {
-    return false;
-  }
-  const min = {
-    x: brushSelection[0][0],
-    y: brushSelection[0][1],
-  };
-  const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
-  const x = xScale(commit.date);
-  const y = yScale(commit.hourFrac);
-  return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+  return selectedCommits.includes(commit);
 }
 
 function updateSelection() {
@@ -273,10 +296,6 @@ function updateSelection() {
 }
 
 function updateSelectionCount() {
-  const selectedCommits = brushSelection
-    ? commits.filter(isCommitSelected)
-    : [];
-
   const countElement = document.getElementById("selection-count");
   countElement.textContent = `${
     selectedCommits.length || "No"
@@ -286,9 +305,6 @@ function updateSelectionCount() {
 }
 
 function updateLanguageBreakdown() {
-  const selectedCommits = brushSelection
-    ? commits.filter(isCommitSelected)
-    : [];
   const container = document.getElementById("language-breakdown");
 
   if (selectedCommits.length === 0) {
@@ -319,4 +335,30 @@ function updateLanguageBreakdown() {
   }
 
   return breakdown;
+}
+
+function updateCommitProgress(progress) {
+  // Implement the logic to update the visualization based on commitProgress
+  console.log(`Commit progress: ${progress}`);
+  commitMaxTime = timeScale.invert(progress);
+  updateTimeDisplay();
+  // Example: Update the opacity of dots based on progress
+  d3.selectAll("circle").style("opacity", (d) => {
+    return d.datetime <= commitMaxTime ? 1 : 0.1;
+  });
+}
+
+function updateTimeDisplay() {
+  const timeSlider = document.getElementById("commit-slider");
+  const selectedTime = document.getElementById("selected-time");
+  const anyTimeLabel = document.getElementById("any-time");
+
+  timeFilter = Number(timeSlider.value); // Get slider value
+  if (timeFilter === -1) {
+    selectedTime.textContent = ""; // Clear time display
+    anyTimeLabel.style.display = "block"; // Show "(any time)"
+  } else {
+    selectedTime.textContent = commitMaxTime.toLocaleString(); // Display formatted time
+    anyTimeLabel.style.display = "none"; // Hide "(any time)"
+  }
 }

@@ -19,7 +19,6 @@ let pages = [
 const ARE_WE_HOME = document.documentElement.classList.contains("home");
 
 for (let p of pages) {
-  const ARE_WE_HOME = document.documentElement.classList.contains("home");
   let url = p.url;
   if (!ARE_WE_HOME && !url.startsWith("http")) {
     url = "../" + url;

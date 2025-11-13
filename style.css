@@ -335,3 +335,8 @@ circle.selected {
 .stats dd:hover {
   background-color: #bda0b651;
 }
+
+#slider label {
+  flex:1;
+  align-items: baseline;
+}
